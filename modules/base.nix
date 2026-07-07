@@ -45,9 +45,13 @@ in
   flake.modules.homeManager.base = {
     imports = [
       generic.profile
+      homeManager.fonts
+      homeManager.scripts
+      homeManager.catppuccin
       homeManager.other-pkgs
 
-      homeManager.ghostty
+      homeManager.alacritty
+
       homeManager.neovim
       homeManager.vscode
 
@@ -62,6 +66,9 @@ in
       homeManager.go
       homeManager.gpg
       homeManager.wget
+
+      homeManager.rofi-rbw
+      homeManager.swappy
     ];
   };
 }

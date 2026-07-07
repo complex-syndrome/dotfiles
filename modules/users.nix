@@ -2,24 +2,16 @@
   flake.modules.nixos.users =
     { config, ... }:
     {
-      users.users.${config.primaryUser} =
-        # let
-        #   secrets = builtins.fromTOML (builtins.readFile ./enc/secrets.toml);
-        # in
-        {
-          description = config.primaryUser;
-          extraGroups = [
-            "networkmanager"
-            "video"
-            "wheel"
-            "docker"
-          ];
-          isNormalUser = true;
-
-          # openssh.authorizedKeys.keyFiles = [
-          #   config.sops.secrets."ssh/mobile".path
-          # ];
-        };
+      users.users.${config.primaryUser} = {
+        description = config.primaryUser;
+        extraGroups = [
+          "networkmanager"
+          "video"
+          "wheel"
+          "docker"
+        ];
+        isNormalUser = true;
+      };
 
       system.activationScripts.setUserAvatar.text = ''
         mkdir -p /var/lib/AccountsService/{icons,users}

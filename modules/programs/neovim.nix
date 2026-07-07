@@ -11,11 +11,11 @@
         defaultEditor = true;
         sideloadInitLua = true;
 
-        plugins = with pkgs.vimPlugins; [
-          (luasnip.overrideAttrs (oldAttrs: {
-            buildInputs = oldAttrs.buildInputs ++ [ pkgs.lua51Packages.jsregexp ];
-          }))
-        ];
+        # plugins = with pkgs.vimPlugins; [
+        #   (luasnip.overrideAttrs (oldAttrs: {
+        #     buildInputs = oldAttrs.buildInputs ++ [ pkgs.lua51Packages.jsregexp ];
+        #   }))
+        # ];
       };
 
       xdg.configFile = {

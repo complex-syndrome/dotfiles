@@ -7,7 +7,7 @@
       ...
     }:
     {
-      config = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+      config = {
         fonts.fontconfig = {
           enable = true;
           defaultFonts = {

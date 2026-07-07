@@ -26,11 +26,13 @@
 
     import-tree.url = "github:vic/import-tree";
 
-    # catppuccin = {
-    #   url = "github:catppuccin/nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    # v5 alpha
+    noctalia.url = "github:noctalia-dev/noctalia";
 
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

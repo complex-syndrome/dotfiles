@@ -14,7 +14,7 @@ in
       nixos.base
       nixos.gaming
 
-      nixos.kde-plasma
+      nixos.niri
     ];
 
     primaryUser = "nixos";

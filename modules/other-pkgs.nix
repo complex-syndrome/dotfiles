@@ -7,8 +7,15 @@
         lua5_1
         lua51Packages.luarocks
         lua51Packages.tree-sitter-cli
+        lua51Packages.jsregexp
         lua-language-server
         stylua
+
+        # rust
+        rustup
+
+        # kdl (niri)
+        kdlfmt
 
         # python
         python3
@@ -51,6 +58,9 @@
         fd
         unzip
         sqlite
+        wl-clipboard
+        tesseract
+
       ];
     };
 }

@@ -16,23 +16,23 @@
             appearance = lib.mkOption {
               type = lib.types.submodule {
                 options = {
-                  # catppuccin = lib.mkOption {
-                  #   type = lib.types.submodule {
-                  #     options = {
-                  #       flavor = lib.mkOption { type = lib.types.str; };
-                  #       accent = lib.mkOption { type = lib.types.str; };
-                  #     };
-                  #   };
-                  # };
-                  #
-                  # iconTheme = lib.mkOption {
-                  #   type = lib.types.submodule {
-                  #     options = {
-                  #       name = lib.mkOption { type = lib.types.str; };
-                  #       package = lib.mkOption { type = lib.types.package; };
-                  #     };
-                  #   };
-                  # };
+                  catppuccin = lib.mkOption {
+                    type = lib.types.submodule {
+                      options = {
+                        flavor = lib.mkOption { type = lib.types.str; };
+                        accent = lib.mkOption { type = lib.types.str; };
+                      };
+                    };
+                  };
+
+                  iconTheme = lib.mkOption {
+                    type = lib.types.submodule {
+                      options = {
+                        name = lib.mkOption { type = lib.types.str; };
+                        package = lib.mkOption { type = lib.types.package; };
+                      };
+                    };
+                  };
 
                   cursorTheme = lib.mkOption {
                     type = lib.types.submodule {
@@ -107,17 +107,17 @@
         wallpaper = ./wallpaper.jpg;
 
         appearance = {
-          # catppuccin = {
-          #   flavor = "mocha";
-          #   accent = "lavender";
-          # };
-          #
-          # iconTheme = {
-          #   name = "Colloid-Catppuccin-Dark";
-          #   package = pkgs.colloid-icon-theme.override {
-          #     schemeVariants = [ "catppuccin" ];
-          #   };
-          # };
+          catppuccin = {
+            flavor = "mocha";
+            accent = "lavender";
+          };
+
+          iconTheme = {
+            name = "Colloid-Catppuccin-Dark";
+            package = pkgs.colloid-icon-theme.override {
+              schemeVariants = [ "catppuccin" ];
+            };
+          };
 
           cursorTheme = {
             name = "Adwaita";
@@ -128,21 +128,21 @@
           fonts = {
             ui = {
               family = "Inter";
-              size = 11;
+              size = 13;
               package = pkgs.inter;
             };
 
             monospace = {
               family = "JetBrainsMono Nerd Font Mono";
               package = pkgs.nerd-fonts.jetbrains-mono;
-              size = 11;
+              size = 13;
             };
 
             terminal = {
               family = "MesloLGS Nerd Font";
               package = pkgs.nerd-fonts.meslo-lg;
               size = {
-                linux = 12;
+                linux = 15;
               };
             };
           };

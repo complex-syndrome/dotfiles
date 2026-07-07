@@ -13,6 +13,11 @@
 
       programs.virt-manager.enable = true;
 
+      virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [
+        virtiofsd
+      ];
+      services.spice-vdagentd.enable = true;
+
       users.users.nixos.extraGroups = [ "libvirtd" ];
 
       networking.firewall.trustedInterfaces = [ "virbr0" ];
