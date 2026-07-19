@@ -1,56 +1,45 @@
-{ config, ... }:
+{ config, inputs, ... }:
 let
+  inherit (config.flake.modules) nixos;
   hm = config.flake.modules.homeManager;
 in
 {
   flake.modules.nixos.compositorCommon = {
-    services = {
-      displayManager.gdm.enable = true;
-      upower.enable = true;
-      gnome.gnome-keyring.enable = true;
+    imports = [
+      nixos.noctalia
+      nixos.power
+      nixos.security
+    ];
 
-      tlp = {
-        enable = true;
-        pd.enable = true;
-        settings = {
-          # Use tlp-stat -b to check the available parameters
-          STOP_CHARGE_THRESH_BAT0 = 1;
-        };
-      };
-    };
-
-    security = {
-      polkit.enable = true;
-      pam.services.gdm.enableGnomeKeyring = true;
-    };
   };
 
   flake.modules.homeManager.compositorCommon =
     { pkgs, ... }:
     {
       imports = [
-        hm.noctalia
+        hm.cursor
         hm.idle
-        hm.swappy
         hm.gtk
         hm.qt
       ];
 
       home.packages = with pkgs; [
-        file-roller
-        gnome-calculator
+        showtime # video display (mpv)
+
+        hyprpicker # color picker
+
+        # Screenshot
+        grim # fullscreen screenshot
+        slurp # Size of drawn area
+        wayfreeze # Freeze screen
+
+        # Notifications
+        libnotify
+
+        # Stream
         gnome-pomodoro
         gpu-screen-recorder
-        grim
-        hyprpicker
-        libnotify
-        loupe
-        nautilus
-        pavucontrol
-        seahorse
-        showtime
-        slurp
-        wayfreeze
+        pavucontrol # Control audio
       ];
     };
 }

@@ -11,6 +11,9 @@
         lua-language-server
         stylua
 
+        # json
+        jq
+
         # rust
         rustup
 
@@ -54,13 +57,14 @@
         tectonic
         mermaid-cli
 
-        ripgrep
-        fd
-        unzip
         sqlite
         wl-clipboard
         tesseract
 
+        yt-dlp
+        wev # Used to detect keys for assigning keybinds
+
+        bun
       ];
     };
 }

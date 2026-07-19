@@ -1,6 +1,11 @@
 {
-  flake.modules.nixos.printing = {
-    # Enable CUPS to print documents.
-    services.printing.enable = true;
-  };
+  flake.modules.nixos.printing =
+    { pkgs, ... }:
+    {
+      # Enable CUPS to print documents.
+      services.printing = {
+        enable = true;
+        drivers = with pkgs; [ hplip ];
+      };
+    };
 }

@@ -1,18 +1,21 @@
-{ config, ... }:
+{ config, inputs, ... }:
 let
   inherit (config.flake.modules) nixos homeManager;
 in
 {
   flake.modules.nixos.niri = {
-    imports = [ nixos.compositorCommon ];
+    imports = [
+      nixos.compositorCommon
+      inputs.noctalia-greeter.nixosModules.default
+    ];
 
     home-manager.sharedModules = [
       homeManager.compositorCommon
       homeManager.niri
     ];
 
-    services.displayManager.defaultSession = "niri";
     programs.niri.enable = true;
+    programs.noctalia-greeter.enable = true;
   };
 
   flake.modules.homeManager.niri =

@@ -1,0 +1,1 @@
+play_ng -n synth 0.1 sine 880 vol 1

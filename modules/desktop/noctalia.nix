@@ -1,5 +1,13 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
+let
+  hm = config.flake.modules.homeManager;
+in
 {
+  flake.modules.nixos.noctalia = {
+    home-manager.sharedModules = [ hm.noctalia ];
+    services.upower.enable = true;
+  };
+
   flake.modules.homeManager.noctalia =
     {
       config,
@@ -148,6 +156,12 @@
             enabled = true;
             blur_intensity = 0.3;
             tint_intensity = 0.3;
+          };
+
+          lockscreen = {
+            enabled = true;
+            fingerprint = true;
+            allow_empty_password = false;
           };
         };
       };

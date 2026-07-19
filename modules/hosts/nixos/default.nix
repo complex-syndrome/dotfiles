@@ -11,8 +11,9 @@ in
       inputs.hardware.nixosModules.common-pc-laptop
 
       ./_hardware.nix
+
       nixos.base
-      nixos.gaming
+      nixos.aliases
 
       nixos.niri
     ];

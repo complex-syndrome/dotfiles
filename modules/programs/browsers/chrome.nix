@@ -1,15 +1,15 @@
 { pkgs, ... }:
 
 {
-  flake.modules.nixos.brave =
+  flake.modules.homeManager.chrome =
     { pkgs, ... }:
     {
       imports = [
         ./_chromium-extensions.nix
       ];
 
-      environment.systemPackages = with pkgs; [
-        brave
+      home.packages = with pkgs; [
+        google-chrome
       ];
     };
 }

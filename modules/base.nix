@@ -11,12 +11,14 @@ let
     generic.primaryUserHome
     generic.nixSettings
   ];
+  hm = config.flake.modules.homeManager;
 in
 {
   flake.modules.nixos.base = {
     imports = commonImports ++ [
-      nixos.brave
-      nixos.containers
+      nixos.steam
+      # nixos.containers
+      nixos.trash
 
       nixos.audio
       nixos.bluetooth
@@ -38,6 +40,12 @@ in
       nixos.tailscale
 
       nixos.users
+
+      nixos.appImageRun
+      nixos.flatpak
+
+      nixos.thunar
+
     ];
     home-manager.sharedModules = [ homeManager.base ];
   };
@@ -45,30 +53,55 @@ in
   flake.modules.homeManager.base = {
     imports = [
       generic.profile
-      homeManager.fonts
-      homeManager.scripts
-      homeManager.catppuccin
-      homeManager.other-pkgs
+      hm.brave
 
-      homeManager.alacritty
+      hm.fonts
+      hm.scripts
+      hm.catppuccin
+      hm.other-pkgs
 
-      homeManager.neovim
-      homeManager.vscode
+      hm.alacritty
+      hm.obsidian
+      hm.timeshift
 
-      homeManager.bash
-      homeManager.bat
-      homeManager.btop
-      homeManager.eza
-      homeManager.fastfetch
-      homeManager.fzf
-      homeManager.git
-      homeManager.gh
-      homeManager.go
-      homeManager.gpg
-      homeManager.wget
+      homeManager.godot
+      # homeManager.aseprite
+      hm.blender
 
-      homeManager.rofi-rbw
-      homeManager.swappy
+      hm.neovim
+      hm.vscode
+
+      hm.bash
+      hm.bat
+      hm.btop
+      hm.eza
+      hm.fastfetch
+      hm.fzf
+      hm.git
+      hm.gh
+      hm.go
+      hm.gpg
+      hm.wget
+      hm.fd
+      hm.ripgrep
+      hm.unzip
+      hm.zip
+
+      hm.obs-studio
+      hm.swappy
+
+      hm.discord
+      hm.heroic
+      # steam at nixos
+
+      hm.wayvnc
+      hm.localsend
+      hm.scrcpy
+
+      hm.vicinae
+
+      hm.bitwarden-cli
+      hm.keepassxc
     ];
   };
 }

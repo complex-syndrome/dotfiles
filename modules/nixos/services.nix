@@ -5,7 +5,5 @@
       NetworkManager-wait-online.enable = false; # Wait for online before start
       plymouth-quit-wait.enable = false; # Logo splash screen
     };
-
-    services.devmon.enable = true; # Auto mount drives
   };
 }

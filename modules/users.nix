@@ -9,6 +9,7 @@
           "video"
           "wheel"
           "docker"
+          "lp"
         ];
         isNormalUser = true;
       };

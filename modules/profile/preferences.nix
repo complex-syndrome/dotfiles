@@ -103,7 +103,7 @@
       };
 
       config.profile = {
-        avatar = ./avatar;
+        avatar = ./avatar.png;
         wallpaper = ./wallpaper.jpg;
 
         appearance = {
@@ -122,7 +122,7 @@
           cursorTheme = {
             name = "Adwaita";
             package = pkgs.adwaita-icon-theme;
-            size = 24;
+            size = 36;
           };
 
           fonts = {

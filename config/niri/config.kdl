@@ -39,45 +39,46 @@ layout {
         off
     }
 }
+spawn-sh-at-startup "lxqt-policykit-agent &"
 prefer-no-csd
 hotkey-overlay {
     skip-at-startup
 }
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-animations {
- // off
-
-}
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://yalter.github.io/niri/Configuration:-Window-Rules
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id="^org\\.wezfurlong\\.wezterm$"
-    default-column-width {
-
+output "eDP-1" {
+    hot-corners {
+        off
     }
 }
+// Use "niri msg pick-window" to get app-id
 window-rule {
-    match app-id="brave$" title="^Picture-in-Picture$"
-    open-floating true
+    match app-id="brave-browser"
+    match app-id="obsidian"
+    match app-id="Alacritty"
+    match app-id="vesktop"
+    match app-id="pl.skmedix.sklauncher"
+    match app-id="^Minecraft"
+    match app-id="thunar"
+    match app-id="dev.noctalia.Noctalia.Settings" title="^Noctalia Settings"
+    open-maximized true
 }
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-match app-id=r#"^org\.gnome\.World\.Secrets$"#
-block-out-from "screen-capture"
-// Use this instead if you want them visible on third-party screenshot tools.
-// block-out-from "screencast"
+window-rule {
+    match app-id="brave-browser" title="^Picture-in-Picture$"
+    match app-id="thunar" title="^Rename"
+    match app-id="" title="^Authentication Required"
+    open-floating true
 }
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+window-rule {
+    match app-id="^org\\.keepassxc\\.KeePassXC$"
+    match app-id="^org\\.gnome\\.World\\.Secrets$"
+    block-out-from "screen-capture"
+ // Use this instead if you want them visible on third-party screenshot tools.
+// block-out-from "screencast"
 }
 layer-rule {
     match namespace="^noctalia-backdrop"
@@ -87,19 +88,30 @@ binds {
     Mod+Shift+Slash {
         show-hotkey-overlay
     }
-    Mod+Alt+B hotkey-overlay-title="Open a [B]rowser: Brave" {
+    Mod+Alt+O hotkey-overlay-title="[O]bsidian" {
+        spawn-sh "obsidian"
+    }
+    Mod+B hotkey-overlay-title="Open a [B]rowser" {
         spawn-sh "brave --enable-features=UseOzonePlatform --ozone-platform=wayland"
     }
     Mod+Alt+F hotkey-overlay-title="Open [F]ile Manager" {
-        spawn "nautilus"
+        spawn-sh "thunar"
     }
-    Mod+Alt+T hotkey-overlay-title="Open a [T]erminal: alacritty" {
+    Mod+D hotkey-overlay-title="Open [D]iscord" {
+        spawn-sh "vesktop"
+    }
+    Mod+M hotkey-overlay-title="Open [M]inecraft Launcher" {
+        // spawn-sh "launchers=(Apps/SKlauncher-*) && notify-send 'Opening Minecraft...' && appimage-run \"${launchers[0]}\""
+        // Hack to prevent {} being escaped (etc. vicinae)
+        spawn-sh "set -- Apps/SKlauncher-* && notify-send 'Opening Minecraft...' && appimage-run \"$1\""
+    }
+    Mod+T hotkey-overlay-title="Open a [T]erminal" {
         spawn "alacritty"
     }
-    Mod+Shift+N hotkey-overlay-title="[N]octalia Settings" {
+    Mod+Alt+N hotkey-overlay-title="[N]octalia Settings" {
         spawn-sh "noctalia msg settings-toggle"
     }
-    Mod+B hotkey-overlay-title="[B]ar toggle" {
+    Mod+Alt+B hotkey-overlay-title="[B]ar toggle" {
         spawn-sh "noctalia msg bar-toggle"
     }
     Mod+N hotkey-overlay-title="[N]octalia Dashboard" {
@@ -107,14 +119,20 @@ binds {
     }
     // Application launcher
     Mod+Space hotkey-overlay-title="Toggle Launcher" {
-        spawn-sh "noctalia msg panel-toggle launcher"
+        spawn-sh "vicinae toggle"
+ // spawn-sh "noctalia msg panel-toggle launcher"
     }
     // Lock screen
-    Ctrl+Alt+L hotkey-overlay-title="Lock Screen" {
+    Mod+Alt+L hotkey-overlay-title="Lock Screen" {
         spawn-sh "noctalia msg session lock"
     }
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    Mod+Alt+P hotkey-overlay-title="Lock and power off monitors" {
+        spawn-sh "noctalia msg session lock && niri msg action power-off-monitors"
+    }
     // Clipboard history
-    Mod+Shift+V hotkey-overlay-title="Clipboard History" {
+    Mod+V hotkey-overlay-title="Clipboard History" {
         spawn-sh "noctalia msg panel-toggle clipboard"
     }
     // Screenshot (Region)
@@ -166,6 +184,12 @@ binds {
     }
     Mod+Q repeat=false {
         close-window
+    }
+    Mod+MouseBack {
+        focus-column-left
+    }
+    Mod+MouseForward {
+        focus-column-right
     }
     Mod+Left {
         focus-column-left
@@ -498,7 +522,7 @@ binds {
         set-window-height "+10%"
     }
     // Move the focused window between the floating and the tiling layout.
-    Mod+V {
+    Mod+Alt+V {
         toggle-window-floating
     }
     Mod+Ctrl+V {
@@ -543,11 +567,6 @@ binds {
     }
     Ctrl+Alt+Delete {
         quit
-    }
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
-    Mod+Shift+P {
-        spawn-sh "noctalia msg session lock && niri msg action power-off-monitors"
     }
 }
 

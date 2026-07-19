@@ -2,7 +2,7 @@
   flake.modules.homeManager.git =
     { config, ... }:
     let
-      profile = builtins.fromTOML (builtins.readFile ../enc/profile.toml);
+      profile = builtins.fromTOML (builtins.readFile ../../../enc/profile.toml);
     in
     {
       xdg.configFile."git/config-soton".text = ''

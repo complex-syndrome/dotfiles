@@ -10,6 +10,12 @@
         "ks"
         "pull-all"
         "traverser"
+
+        # Convenience patch
+        "pp-run"
+        "config"
+        "switch"
+        "ding"
       ];
 
       linuxScripts = [
