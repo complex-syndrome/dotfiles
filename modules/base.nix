@@ -45,7 +45,7 @@ in
       nixos.flatpak
 
       nixos.thunar
-
+      nixos.zsh
     ];
     home-manager.sharedModules = [ homeManager.base ];
   };
@@ -69,9 +69,10 @@ in
       hm.blender
 
       hm.neovim
-      hm.vscode
+      hm.zed-editor
 
-      hm.bash
+      hm.zsh
+      hm.atuin
       hm.bat
       hm.btop
       hm.eza
@@ -86,6 +87,8 @@ in
       hm.ripgrep
       hm.unzip
       hm.zip
+      hm.zoxide
+      hm.tmux
 
       hm.obs-studio
       hm.swappy

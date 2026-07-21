@@ -58,6 +58,8 @@ window-rule {
     match app-id="pl.skmedix.sklauncher"
     match app-id="^Minecraft"
     match app-id="thunar"
+    match app-id="btop.desktop"
+    match app-id="org.qbittorrent.qBittorrent"
     match app-id="dev.noctalia.Noctalia.Settings" title="^Noctalia Settings"
     open-maximized true
 }
@@ -88,39 +90,43 @@ binds {
     Mod+Shift+Slash {
         show-hotkey-overlay
     }
-    Mod+Alt+O hotkey-overlay-title="[O]bsidian" {
-        spawn-sh "obsidian"
-    }
     Mod+B hotkey-overlay-title="Open a [B]rowser" {
         spawn-sh "brave --enable-features=UseOzonePlatform --ozone-platform=wayland"
+    }
+    Mod+T hotkey-overlay-title="Open a [T]erminal" {
+        spawn "alacritty"
+    }
+    Mod+N hotkey-overlay-title="[N]octalia Dashboard" {
+        spawn-sh "noctalia msg panel-toggle control-center"
+    }
+    // Clipboard history
+    Mod+V hotkey-overlay-title="Clipboard History" {
+        spawn-sh "noctalia msg panel-toggle clipboard"
+    }
+    // Application launcher
+    Mod+Space hotkey-overlay-title="Toggle Launcher" {
+        spawn-sh "vicinae toggle"
+ // spawn-sh "noctalia msg panel-toggle launcher"
+    }
+    Mod+Alt+O hotkey-overlay-title="[O]bsidian" {
+        spawn-sh "obsidian"
     }
     Mod+Alt+F hotkey-overlay-title="Open [F]ile Manager" {
         spawn-sh "thunar"
     }
-    Mod+D hotkey-overlay-title="Open [D]iscord" {
+    Mod+Alt+D hotkey-overlay-title="Open [D]iscord" {
         spawn-sh "vesktop"
     }
-    Mod+M hotkey-overlay-title="Open [M]inecraft Launcher" {
+    Mod+Alt+M hotkey-overlay-title="Open [M]inecraft Launcher" {
         // spawn-sh "launchers=(Apps/SKlauncher-*) && notify-send 'Opening Minecraft...' && appimage-run \"${launchers[0]}\""
         // Hack to prevent {} being escaped (etc. vicinae)
         spawn-sh "set -- Apps/SKlauncher-* && notify-send 'Opening Minecraft...' && appimage-run \"$1\""
-    }
-    Mod+T hotkey-overlay-title="Open a [T]erminal" {
-        spawn "alacritty"
     }
     Mod+Alt+N hotkey-overlay-title="[N]octalia Settings" {
         spawn-sh "noctalia msg settings-toggle"
     }
     Mod+Alt+B hotkey-overlay-title="[B]ar toggle" {
         spawn-sh "noctalia msg bar-toggle"
-    }
-    Mod+N hotkey-overlay-title="[N]octalia Dashboard" {
-        spawn-sh "noctalia msg panel-toggle control-center"
-    }
-    // Application launcher
-    Mod+Space hotkey-overlay-title="Toggle Launcher" {
-        spawn-sh "vicinae toggle"
- // spawn-sh "noctalia msg panel-toggle launcher"
     }
     // Lock screen
     Mod+Alt+L hotkey-overlay-title="Lock Screen" {
@@ -130,10 +136,6 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Alt+P hotkey-overlay-title="Lock and power off monitors" {
         spawn-sh "noctalia msg session lock && niri msg action power-off-monitors"
-    }
-    // Clipboard history
-    Mod+V hotkey-overlay-title="Clipboard History" {
-        spawn-sh "noctalia msg panel-toggle clipboard"
     }
     // Screenshot (Region)
     Mod+Shift+S hotkey-overlay-title="Screenshot Region" {
@@ -185,10 +187,10 @@ binds {
     Mod+Q repeat=false {
         close-window
     }
-    Mod+MouseBack {
+    MouseBack {
         focus-column-left
     }
-    Mod+MouseForward {
+    MouseForward {
         focus-column-right
     }
     Mod+Left {

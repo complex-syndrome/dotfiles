@@ -60,11 +60,6 @@
         sqlite
         wl-clipboard
         tesseract
-
-        yt-dlp
-        wev # Used to detect keys for assigning keybinds
-
-        bun
       ];
     };
 }

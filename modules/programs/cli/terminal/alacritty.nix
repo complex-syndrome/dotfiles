@@ -15,12 +15,12 @@
           };
 
           terminal = {
-            shell.program = "${pkgs.bash}/bin/bash";
-            # shell.args = [
-            #   "-l"
-            #   "-c"
-            #   "tmux attach || tmux"
-            # ];
+            shell.program = "${pkgs.zsh}/bin/zsh";
+            shell.args = [
+              # "-l"
+              # "-c"
+              # "tmux attach || tmux"
+            ];
           };
 
           window = {

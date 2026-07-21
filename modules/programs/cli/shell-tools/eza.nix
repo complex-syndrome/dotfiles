@@ -6,5 +6,11 @@
       enableZshIntegration = false;
       enableFishIntegration = false;
     };
+
+    home.shellAliases = {
+      ls = "eza --icons --git";
+      lt = "ls -T";
+    };
+
   };
 }

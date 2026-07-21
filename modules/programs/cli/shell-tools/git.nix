@@ -26,7 +26,7 @@
               path = "~/.config/git/config-soton";
             };
           };
-          # TODO
+          # TODO:
           # signing = {
           #   key = config.profile.gitKey;
           #   signByDefault = true;

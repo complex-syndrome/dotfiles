@@ -8,10 +8,3 @@
       ];
     };
 }
-
-# Can try: TODO
-# Shotwell
-# IrfanView + Wine
-# ImageGlass (beta)
-# ClassicImageViewer
-# XnViewMP

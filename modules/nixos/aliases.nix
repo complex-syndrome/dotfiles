@@ -10,8 +10,7 @@
       gs = "git status";
       gl = "git remote -v";
 
-      ls = "eza --icons --git";
-      lt = "ls -T";
+      cd = "z";
       l = "ls -alh";
       la = "ls -al";
       ll = "ls -l";

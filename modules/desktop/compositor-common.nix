@@ -21,11 +21,12 @@ in
         hm.idle
         hm.gtk
         hm.qt
+
+        # ImageGlass photo viewer installed via flatpak
+        hm.showtime # Video viewer
       ];
 
       home.packages = with pkgs; [
-        showtime # video display (mpv)
-
         hyprpicker # color picker
 
         # Screenshot

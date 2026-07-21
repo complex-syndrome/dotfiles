@@ -5,6 +5,20 @@
     {
       imports = [ inputs.vicinae.homeManagerModules.default ];
 
+      # FIX: This sadly does not work, we'll deal with it next time
+      # FIX: Maybe use appimage instead to get the browser-link binary?
+      xdg.configFile."BraveSoftware/Brave-Browser/NativeMessagingHosts/com.vicinae.vicinae.json".text =
+        builtins.toJSON
+          {
+            name = "com.vicinae.vicinae";
+            description = "Vicinae Native Messaging Host";
+            path = "${pkgs.vicinae}/bin/vicinae-browser-link";
+            type = "stdio";
+            allowed_origins = [
+              "chrome-extension://kcmipingpfbohfjckomimmahknoddnke/"
+            ];
+          };
+
       programs.vicinae = {
         enable = true;
         systemd = {
@@ -12,13 +26,17 @@
           autoStart = true;
         };
 
+        # As (I think) vicinae keeps on generating its own config,
+        # live update via config.lib.file.mkOutOfStoreSymlink can't be achieved easily
+        # an alternative would be nixos-rebuild
         settings = {
           favorites = [
-            "clipboard:history"
-            "core:settings"
-            "@jomifepe/store.raycast.bitwarden:search"
             "@knoopx/store.vicinae.nix:packages"
             "@knoopx/store.vicinae.nix:options"
+            "@knoopx/store.vicinae.nix:home-manager-options"
+            "@jomifepe/store.raycast.bitwarden:search"
+            "clipboard:history"
+            "core:settings"
           ];
           launcher_window = {
             blur.enabled = true;
@@ -100,6 +118,30 @@
                 };
               };
             };
+            browser-extension = {
+              enabled = false;
+              entrypoints = {
+                browse-tabs = {
+                  enabled = true;
+                };
+                shortcut-active-tab = {
+                  enabled = true;
+                };
+              };
+            };
+            "@dagimg-dot/store.vicinae.wifi-commander" = {
+              entrypoints = {
+                manage-saved-networks = {
+                  enabled = false;
+                };
+                toggle-wifi-off = {
+                  enabled = false;
+                };
+                toggle-wifi-on = {
+                  enabled = false;
+                };
+              };
+            };
             "@Gelei/store.vicinae.bluetooth" = {
               preferences = {
                 connectionToggleable = true;
@@ -122,22 +164,10 @@
                 syncOnLaunch = true;
                 windowActionOnCopy = "close";
               };
-              entrypoints = {
-                create-folder = {
-                  enabled = true;
-                };
-                create-send = {
-                  enabled = true;
-                };
-                generate-password-quick = {
-                  enabled = true;
-                };
-                receive-send = {
-                  enabled = true;
-                };
-                search-sends = {
-                  enabled = true;
-                };
+            };
+            "@system7/store.vicinae.keepassxc" = {
+              preferences = {
+                database = "${config.home.homeDirectory}/Documents/.Secrets/Passwords.kdbx";
               };
             };
             "@josephschmitt/store.raycast.gif-search" = {
@@ -190,13 +220,6 @@
                 show-pid = true;
                 show-system-processes = false;
                 sort-by-memory = true;
-              };
-            };
-            browser-extension = {
-              entrypoints = {
-                shortcut-active-tab = {
-                  enabled = true;
-                };
               };
             };
             clipboard = {
@@ -322,17 +345,5 @@
           };
         };
       };
-
-      xdg.configFile."BraveSoftware/Brave-Browser/NativeMessagingHosts/com.vicinae.vicinae.json".text =
-        builtins.toJSON
-          {
-            name = "com.vicinae.vicinae";
-            description = "Vicinae Native Messaging Host";
-            path = "${pkgs.vicinae}/bin/vicinae";
-            type = "stdio";
-            allowed_origins = [
-              "chrome-extension://kcmipingpfbohfjckomimmahknoddnke/"
-            ];
-          };
     };
 }
