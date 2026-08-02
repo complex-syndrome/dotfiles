@@ -2,6 +2,10 @@
   flake.modules.homeManager.tmux =
     { pkgs, ... }:
     {
+      home.shellAliases = {
+        tmux-help = "cat ~/dotfiles/config/tmux/help.txt";
+      };
+
       programs.tmux = {
         enable = true;
         baseIndex = 1;
@@ -20,14 +24,8 @@
           # Use | and - to split a window vertically and horizontally instead of " and % respectively
           unbind '"'
           unbind %
-          bind v split-window -h -c "#{pane_current_path}"
-          bind s split-window -v -c "#{pane_current_path}"
-
-          # Bind Arrow keys to resize the window
-          bind -n S-Down resize-pane -D 8
-          bind -n S-Up resize-pane -U 8
-          bind -n S-Left resize-pane -L 8
-          bind -n S-Right resize-pane -R 8
+          bind | split-window -h -c "#{pane_current_path}"
+          bind - split-window -v -c "#{pane_current_path}"
 
           # Rename window with prefix + r
           bind r command-prompt -I "#W" "rename-window '%%'"
@@ -35,14 +33,12 @@
           # Reload tmux config by pressing prefix + R
           bind R source-file "$HOME/.config/tmux/tmux.conf" \; display "TMUX Conf Reloaded"
 
-          # Clear screen with prefix + l
-          bind C-l send-keys 'C-l'
-
           # Open a project in a separate window
           bind-key -n C-f run-shell "tmux new-window -t 10 -n project-selector cd-to-project"
 
           # Enable focus-events
           set -g focus-events on
+          setw -g mode-keys vi
 
           # Smart pane switching with awareness of Vim splits
           is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf|atuin)(diff)?$'"
@@ -51,10 +47,15 @@
           bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
           bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
 
+          bind C-l send-keys 'C-l'
+
           bind-key -T copy-mode-vi 'C-h' select-pane -L
           bind-key -T copy-mode-vi 'C-j' select-pane -D
           bind-key -T copy-mode-vi 'C-k' select-pane -U
           bind-key -T copy-mode-vi 'C-l' select-pane -R
+
+          # For image.nvim to passthrough tmux
+          set -g allow-passthrough on
         '';
       };
 

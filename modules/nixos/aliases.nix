@@ -1,22 +1,18 @@
 {
-  flake.modules.nixos.aliases = {
-    environment.shellAliases = {
-      cls = "clear";
-      nv = "nvim";
-      py = "python3";
+  flake.modules.nixos.aliases =
+    { config, ... }:
+    {
+      environment.shellAliases = {
+        cls = "clear";
+        nv = "nvim";
 
-      ga = "git add .";
-      gcm = "git commit -m";
-      gs = "git status";
-      gl = "git remote -v";
+        l = "ls -alh";
+        la = "ls -al";
+        ll = "ls -l";
 
-      cd = "z";
-      l = "ls -alh";
-      la = "ls -al";
-      ll = "ls -l";
+        wttr = "curl wttr.in";
 
-      ff = "fastfetch";
-      wttr = "curl wttr.in";
+        tmux-help = "cat ~/dotfiles/config/tmux/help.txt";
+      };
     };
-  };
 }

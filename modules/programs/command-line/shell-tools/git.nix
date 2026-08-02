@@ -5,6 +5,14 @@
       profile = builtins.fromTOML (builtins.readFile ../../../enc/profile.toml);
     in
     {
+      home.shellAliases = {
+        ga = "git add .";
+        gcm = "git commit -m";
+        gs = "git status";
+        gl = "git remote -v";
+        gcl = "git clone --depth=1";
+      };
+
       xdg.configFile."git/config-soton".text = ''
         [user]
           name = ${profile.git.soton.user_name}

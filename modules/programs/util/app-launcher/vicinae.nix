@@ -58,8 +58,23 @@
               defaultAction = "launch";
               launchPrefix = "sh";
               entrypoints = {
-                Alacritty = {
+                "writer" = {
+                  alias = "word";
+                };
+                "calc" = {
+                  alias = "excel";
+                };
+                "org.kde.kdeconnect.nonplasma" = {
+                  "enabled" = false;
+                };
+                "com.mitchellh.ghostty" = {
                   alias = "terminal cmd shell";
+                };
+                "com.heroicgameslauncher.hgl" = {
+                  alias = "epic games";
+                };
+                "steam" = {
+                  alias = "games";
                 };
                 "dev.noctalia.Noctalia" = {
                   enabled = false;
@@ -72,9 +87,6 @@
                 };
                 brave-browser = {
                   alias = "google chrome browser";
-                };
-                fcitx5-configtool = {
-                  enabled = false;
                 };
                 nixos-manual = {
                   enabled = false;

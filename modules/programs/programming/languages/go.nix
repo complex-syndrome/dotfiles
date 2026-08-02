@@ -6,7 +6,11 @@
       GOBIN = "${GOPATH}/bin";
     in
     {
-      home.packages = [ pkgs.golangci-lint ];
+      home.packages = with pkgs; [
+        golangci-lint
+        gopls
+        gotools
+      ];
 
       programs.go = {
         enable = true;

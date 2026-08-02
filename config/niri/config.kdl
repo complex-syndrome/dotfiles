@@ -53,7 +53,7 @@ output "eDP-1" {
 window-rule {
     match app-id="brave-browser"
     match app-id="obsidian"
-    match app-id="Alacritty"
+    match app-id="com.mitchellh.ghostty"
     match app-id="vesktop"
     match app-id="pl.skmedix.sklauncher"
     match app-id="^Minecraft"
@@ -94,7 +94,7 @@ binds {
         spawn-sh "brave --enable-features=UseOzonePlatform --ozone-platform=wayland"
     }
     Mod+T hotkey-overlay-title="Open a [T]erminal" {
-        spawn "alacritty"
+        spawn-sh "spawn-terminal com.mitchellh.ghostty ghostty"
     }
     Mod+N hotkey-overlay-title="[N]octalia Dashboard" {
         spawn-sh "noctalia msg panel-toggle control-center"
@@ -192,6 +192,12 @@ binds {
     }
     MouseForward {
         focus-column-right
+    }
+    Mod+MouseBack {
+        focus-workspace-down
+    }
+    Mod+MouseForward {
+        focus-workspace-up
     }
     Mod+Left {
         focus-column-left

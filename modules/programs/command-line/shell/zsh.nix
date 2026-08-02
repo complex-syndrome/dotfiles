@@ -20,10 +20,8 @@
       # NOTE: Remember to rm -rf ~/.cache/antidote and antidote load to install new plugins
       home.file.".zsh_plugins.txt".text = ''
         ohmyzsh/ohmyzsh path:plugins/extract
-        ohmyzsh/ohmyzsh path:plugins/colored-man-pages
         ohmyzsh/ohmyzsh path:plugins/dirhistory
-        ohmyzsh/ohmyzsh path:plugins/copypath
-        ohmyzsh/ohmyzsh path:plugins/copyfile
+
         ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
         fdellwing/zsh-bat

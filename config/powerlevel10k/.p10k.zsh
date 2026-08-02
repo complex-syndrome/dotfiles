@@ -545,7 +545,7 @@
 	# Show this many fractional digits. Zero means round to seconds.
 	typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=0
 	# Execution time color.
-	typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=15
+	typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=14
 	# Duration format: 1d 2h 3m 4s.
 	typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FORMAT='d h m s'
 	# Custom icon.
@@ -829,7 +829,7 @@
 	#
 	# These variables correspond to the last line of the output of `todo.sh -p ls`:
 	#
-	#   TODO: 24 of 42 tasks shown
+	#   TODO  24 of 42 tasks shown
 	#
 	# Here 24 is P9K_TODO_FILTERED_TASK_COUNT and 42 is P9K_TODO_TOTAL_TASK_COUNT.
 	#
@@ -1628,11 +1628,24 @@
 	#   P9K_WIFI_NOISE        | noise in dBm, from -120 to 0
 	#   P9K_WIFI_BARS         | signal strength in bars, from 0 to 4 (derived from P9K_WIFI_RSSI and P9K_WIFI_NOISE)
 
+	# # Prompt time display
+	# function p10k-on-pre-prompt() {
+	# 	# Hide right-side time/execution info on the active prompt where you are typing
+	# 	p10k display '1/right/time'=hide '1/right/command_execution_time'=hide
+	# }
+	#
+	# # Called right after you hit Enter (transient state for past commands)
+	# function p10k-on-post-prompt() {
+	# 	# Trim down the prompt and keep/show execution time or timestamp on the right
+	# 	p10k display '1/right/time'=show '1/right/command_execution_time'=show
+	# }
+
 	####################################[ time: current time ]####################################
 	# Current time color.
 	typeset -g POWERLEVEL9K_TIME_FOREGROUND=15
 	# Format for the current time: 09:51:02. See `man 3 strftime`.
-	typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
+	typeset -g POWERLEVEL9K_TIME_FORMAT=''
+	## typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
 	# If set to true, time will update when you hit enter. This way prompts for the past
 	# commands will contain the start times of their commands as opposed to the default
 	# behavior where they contain the end times of their preceding commands.
@@ -1682,18 +1695,7 @@
 	#   - same-dir: Trim down prompt when accepting a command line unless this is the first command
 	#               typed after changing current working directory.
 	typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
-
-	function p10k-on-pre-prompt() {
-		# Hide right-side time/execution info on the active prompt where you are typing
-		p10k display '1/right/time'=hide '1/right/command_execution_time'=hide
-	}
-
-	# Called right after you hit Enter (transient state for past commands)
-	function p10k-on-post-prompt() {
-		# Trim down the prompt and keep/show execution time or timestamp on the right
-		p10k display '1/right/time'=show '1/right/command_execution_time'=show
-	}
-
+	#
 	# Instant prompt mode.
 	#
 	#   - off:     Disable instant prompt. Choose this if you've tried instant prompt and found

@@ -107,8 +107,19 @@
         name = "Colloid${themeSuffix}-Dark-Compact-Catppuccin";
         package = mkCatppuccinColloid { inherit themeVariant accent; };
       };
+
+      documents = "file://${config.home.homeDirectory}/Documents";
+      downloads = "file://${config.home.homeDirectory}/Downloads";
+      pictures = "file://${config.home.homeDirectory}/Pictures";
+      videos = "file://${config.home.homeDirectory}/Videos";
+      projects = "file://${config.home.homeDirectory}/Projects";
+      # "file://${config.home.homeDirectory}/repositories"
     in
     {
+      home.sessionVariables = {
+        Projects = projects;
+      };
+
       catppuccin.gtk.icon.enable = false;
 
       gtk = {
@@ -126,10 +137,11 @@
           inherit (config.profile.appearance.fonts.ui) size;
         };
         gtk3.bookmarks = [
-          "file://${config.home.homeDirectory}/Documents"
-          "file://${config.home.homeDirectory}/Downloads"
-          "file://${config.home.homeDirectory}/Pictures"
-          "file://${config.home.homeDirectory}/Videos"
+          documents
+          downloads
+          pictures
+          videos
+          projects
         ];
       };
     };

@@ -17,9 +17,9 @@
           terminal = {
             shell.program = "${pkgs.zsh}/bin/zsh";
             shell.args = [
-              # "-l"
-              # "-c"
-              # "tmux attach || tmux"
+              "-l"
+              "-c"
+              "tmux attach || tmux"
             ];
           };
 
@@ -43,7 +43,7 @@
           };
 
           font = {
-            size = config.profile.appearance.fonts.terminal.size.linux;
+            size = config.profile.appearance.fonts.terminal.size;
             normal = {
               inherit (config.profile.appearance.fonts.terminal) family;
               style = "Regular";

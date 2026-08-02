@@ -27,7 +27,7 @@
 
       # Open In Terminal
       dconf.settings."org/cinnamon/desktop/applications/terminal" = {
-        exec = "alacritty";
+        exec = "ghostty";
       };
     };
 }

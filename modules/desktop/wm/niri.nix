@@ -15,7 +15,13 @@ in
     ];
 
     programs.niri.enable = true;
-    programs.noctalia-greeter.enable = true;
+
+    programs.noctalia-greeter = {
+      enable = true;
+      settings = {
+
+      };
+    };
   };
 
   flake.modules.homeManager.niri =

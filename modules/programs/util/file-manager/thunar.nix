@@ -23,7 +23,7 @@
 
   flake.modules.homeManager.thunar = {
     xdg.configFile."xfce4/helpers.rc".text = ''
-      			TerminalEmulator=alacritty
+      			TerminalEmulator=ghostty
       			'';
   };
 }

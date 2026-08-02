@@ -1,5 +1,9 @@
 {
   flake.modules.homeManager.fastfetch = {
+    home.shellAliases = {
+      ff = "fastfetch";
+    };
+
     programs.fastfetch = {
       enable = true;
       settings = {

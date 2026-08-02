@@ -46,6 +46,8 @@ in
 
       nixos.thunar
       nixos.zsh
+
+      nixos.localsend
     ];
     home-manager.sharedModules = [ homeManager.base ];
   };
@@ -60,16 +62,14 @@ in
       hm.catppuccin
       hm.other-pkgs
 
-      hm.alacritty
+      hm.ghostty
+
       hm.obsidian
       hm.timeshift
 
-      homeManager.godot
-      # homeManager.aseprite
-      hm.blender
-
       hm.neovim
       hm.zed-editor
+      hm.jetbrains-toolbox
 
       hm.zsh
       hm.atuin
@@ -80,8 +80,6 @@ in
       hm.fzf
       hm.git
       hm.gh
-      hm.go
-      hm.gpg
       hm.wget
       hm.fd
       hm.ripgrep
@@ -89,6 +87,19 @@ in
       hm.zip
       hm.zoxide
       hm.tmux
+
+      hm.libreoffice
+
+      hm.go
+      hm.java
+      hm.json
+      hm.kdl-niri
+      hm.lua
+      hm.markdown
+      hm.nix
+      hm.python
+      hm.rust
+      hm.sh
 
       hm.obs-studio
       hm.swappy
@@ -98,13 +109,14 @@ in
       # steam at nixos
 
       hm.wayvnc
-      hm.localsend
       hm.scrcpy
 
       hm.vicinae
 
       hm.bitwarden-cli
       hm.keepassxc
+
+      # hm.gpg
     ];
   };
 }
