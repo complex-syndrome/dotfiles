@@ -55,6 +55,7 @@ COPY MODE
   q / Esc               Exit copy mode
 
 COMMAND MODE
+  Prefix R              Reload Config
   Prefix :              Open command prompt
   Prefix ?              List key bindings
   Prefix : source-file ~/.tmux.conf   Reload config

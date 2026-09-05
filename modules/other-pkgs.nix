@@ -15,7 +15,6 @@
         yaml-language-server
         gcc
 
-        lazygit
         imagemagick
         ghostscript
         tectonic
@@ -24,6 +23,9 @@
         sqlite
         wl-clipboard
         tesseract
+
+        claude-code
+        chromedriver
       ];
     };
 }

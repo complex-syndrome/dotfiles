@@ -56,21 +56,9 @@
 
           # For image.nvim to passthrough tmux
           set -g allow-passthrough on
+
+          set -g renumber-windows on
         '';
       };
-
-      catppuccin.tmux.extraConfig = ''
-        set -g @catppuccin_status_background "none"
-        set -g @catppuccin_window_status_style "basic"
-        set -g @catppuccin_window_current_number_color "#{@thm_peach}"
-        set -g @catppuccin_window_current_text " #W"
-        set -g @catppuccin_window_current_text_color "#{@thm_bg}"
-        set -g @catppuccin_window_number_color "#{@thm_blue}"
-        set -g @catppuccin_window_text " #W"
-        set -g @catppuccin_status_left_separator "█"
-        set -g @catppuccin_status_right_separator "█"
-        set -g status-right "#{E:@catppuccin_status_host}#{E:@catppuccin_status_date_time}"
-        set -g status-left ""
-      '';
     };
 }

@@ -1,4 +1,6 @@
-{ config, inputs, ... }:
+# ~/.local/state/noctalia/settings.toml
+# ~/.config/noctalia/config.toml
+{ inputs, config, ... }:
 let
   hm = config.flake.modules.homeManager;
 in
@@ -11,79 +13,23 @@ in
   flake.modules.homeManager.noctalia =
     {
       config,
-      catppuccinColor,
       ...
     }:
-    let
-      inherit (config.profile.appearance) catppuccin;
-      uiFont = config.profile.appearance.fonts.ui.family;
-
-      color = catppuccinColor;
-      accentColor = color catppuccin.accent;
-
-      catppuccinPalette = {
-        dark = {
-          mPrimary = accentColor;
-          mOnPrimary = color "crust";
-          mSecondary = color "pink";
-          mOnSecondary = color "crust";
-          mTertiary = color "mauve";
-          mOnTertiary = color "crust";
-          mError = color "red";
-          mOnError = color "crust";
-          mSurface = color "base";
-          mOnSurface = color "text";
-          mSurfaceVariant = color "surface0";
-          mOnSurfaceVariant = color "subtext0";
-          mOutline = color "overlay0";
-          mShadow = color "crust";
-          mHover = accentColor;
-          mOnHover = color "crust";
-          terminal = {
-            background = color "base";
-            foreground = color "text";
-            cursor = color "rosewater";
-            cursorText = color "base";
-            selectionBg = color "surface2";
-            selectionFg = color "text";
-            normal = {
-              black = color "surface1";
-              red = color "red";
-              green = color "green";
-              yellow = color "yellow";
-              blue = color "blue";
-              magenta = color "pink";
-              cyan = color "teal";
-              white = color "subtext1";
-            };
-            bright = {
-              black = color "surface2";
-              red = color "red";
-              green = color "green";
-              yellow = color "yellow";
-              blue = color "blue";
-              magenta = color "pink";
-              cyan = color "teal";
-              white = color "subtext0";
-            };
-          };
-        };
-      };
-    in
     {
       imports = [ inputs.noctalia.homeModules.default ];
 
       programs.noctalia = {
         enable = true;
         systemd.enable = true;
-        customPalettes."catppuccin-custom" = catppuccinPalette;
 
         settings = {
           shell = {
-            font_family = uiFont;
+            font_family = config.profile.appearance.fonts.ui.family;
             show_location = false;
-
             animation.enabled = false;
+
+            niri_overview_type_to_launch_enabled = true; # Win + O and type something
+            settings_show_advanced = true;
 
             panel = {
               launcher_categories = false;
@@ -98,11 +44,22 @@ in
           };
 
           theme = {
-            source = "custom";
-            custom_palette = "catppuccin-custom";
+            source = "wallpaper";
+            wallpaper_scheme = "soft";
             templates = {
-              enable_builtin_templates = false;
-              enable_community_templates = false;
+              builtin_ids = [
+                "btop"
+                "gtk3"
+                "gtk4"
+                "ghostty"
+                "niri"
+                "qt"
+              ];
+              community_ids = [
+                "brave"
+                "discord"
+                "vicinae"
+              ];
             };
           };
 
@@ -135,6 +92,40 @@ in
             };
           };
 
+          bar.default = {
+            start = [
+              "launcher"
+              "wallpaper"
+              "workspaces"
+              "group:g1"
+            ];
+            end = [
+              "tray"
+              "clipboard"
+              "notifications"
+              "network"
+              "bluetooth"
+              "battery"
+              "session"
+            ];
+            margin_edge = 0;
+            margin_ends = 0;
+            radius = 0;
+
+            capsule_group = [
+              {
+                fill = "surface_variant";
+                id = "g1";
+                members = [
+                  "media"
+                  "audio_visualizer"
+                ];
+                opacity = 1.0;
+                padding = 6.0;
+              }
+            ];
+          };
+
           widget = {
             battery = {
               display_mode = "graphic";
@@ -145,6 +136,7 @@ in
             tray.drawer = true;
             volume.show_label = false;
             brightness.show_label = false;
+            media.hide_when_no_media = true;
             workspaces.hide_when_empty = true;
           };
 
@@ -160,10 +152,9 @@ in
 
           lockscreen = {
             enabled = true;
-            fingerprint = true;
             allow_empty_password = false;
+            blur_intensity = 0.65;
           };
-
         };
       };
     };

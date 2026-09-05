@@ -10,7 +10,7 @@
         # Install extensions from the overlay
         profiles.default.extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
-          catppuccin.catppuccin-vsc
+          # catppuccin.catppuccin-vsc
           tamasfe.even-better-toml
         ];
 

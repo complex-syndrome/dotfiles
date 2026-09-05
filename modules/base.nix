@@ -59,7 +59,8 @@ in
 
       hm.fonts
       hm.scripts
-      hm.catppuccin
+      hm.themes
+
       hm.other-pkgs
 
       hm.ghostty

@@ -28,8 +28,15 @@
 
         # As (I think) vicinae keeps on generating its own config,
         # live update via config.lib.file.mkOutOfStoreSymlink can't be achieved easily
-        # an alternative would be nixos-rebuild
+        # an alternative would be using nixos-rebuild instead
         settings = {
+          theme = {
+            dark = {
+              # name = "matugen";
+              name = "noctalia";
+              icon_theme = "Colloid-Catppuccin";
+            };
+          };
           favorites = [
             "@knoopx/store.vicinae.nix:packages"
             "@knoopx/store.vicinae.nix:options"
@@ -41,15 +48,9 @@
           launcher_window = {
             blur.enabled = true;
             material = "auto";
-          };
-          theme = {
-            dark = {
-              iconTheme = "Catppuccin Mocha Lavender";
-              name = "catppuccin-mocha";
-            };
-            light = {
-              iconTheme = "Catppuccin Mocha Lavender";
-              name = "catppuccin-mocha";
+            opacity = 0.85;
+            client_side_decorations = {
+              shadow_size = 0;
             };
           };
 

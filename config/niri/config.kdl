@@ -39,6 +39,7 @@ layout {
         off
     }
 }
+include "./noctalia.kdl"
 spawn-sh-at-startup "lxqt-policykit-agent &"
 prefer-no-csd
 hotkey-overlay {
@@ -64,8 +65,19 @@ window-rule {
     open-maximized true
 }
 window-rule {
-    match app-id="brave-browser" title="^Picture-in-Picture$"
+    match app-id="brave-browser" title="^Meet.*"
+    open-floating true
+    default-column-width {
+        fixed 450
+    }
+    default-window-height {
+        fixed 325
+    }
+    default-floating-position x=50 y=50 relative-to="bottom-right"
+}
+window-rule {
     match app-id="thunar" title="^Rename"
+    match app-id="thunar" title="^File Operation Progress"
     match app-id="" title="^Authentication Required"
     open-floating true
 }
@@ -161,6 +173,13 @@ binds {
     }
     XF86AudioLowerVolume allow-when-locked=true {
         spawn-sh "noctalia msg volume-down"
+    }
+    // Raise volume (no limit)
+    Alt+XF86AudioRaiseVolume allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"
+    }
+    Alt+XF86AudioLowerVolume allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
     }
     XF86AudioMute allow-when-locked=true {
         spawn-sh "noctalia msg volume-mute"
@@ -577,4 +596,5 @@ binds {
         quit
     }
 }
+include "noctalia.kdl"
 

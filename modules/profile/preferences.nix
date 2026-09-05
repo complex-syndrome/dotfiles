@@ -25,6 +25,15 @@
                     };
                   };
 
+                  gtkTheme = lib.mkOption {
+                    type = lib.types.submodule {
+                      options = {
+                        name = lib.mkOption { type = lib.types.str; };
+                        package = lib.mkOption { type = lib.types.package; };
+                      };
+                    };
+                  };
+
                   iconTheme = lib.mkOption {
                     type = lib.types.submodule {
                       options = {
@@ -104,6 +113,11 @@
           catppuccin = {
             flavor = "mocha";
             accent = "lavender";
+          };
+
+          gtkTheme = {
+            name = "adw-gtk3";
+            package = pkgs.adw-gtk3;
           };
 
           iconTheme = {

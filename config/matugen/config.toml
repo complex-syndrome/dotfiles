@@ -1,0 +1,66 @@
+[config]
+version_check = false
+fallback_color = "#ffbf9b"
+reload_apps = true
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-3.0/matugen.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/matugen.css'
+
+[templates.qt5ct]
+input_path = '~/.config/matugen/templates/qt.conf'
+output_path = '~/.config/qt5ct/colors/matugen.conf'
+
+[templates.qt6ct]
+input_path = '~/.config/matugen/templates/qt.conf'
+output_path = '~/.config/qt6ct/colors/matugen.conf'
+
+[templates.obsidian]
+input_path = '~/.config/matugen/templates/obsidian.css'
+output_path = '~/Documents/Obsidian/Summer-Break/.obsidian/snippets/matugen.css'
+
+[templates.obs-studio]
+input_path = '~/.config/matugen/templates/obs-studio.obt'
+output_path = '~/.config/obs-studio/themes/matugen.obt'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'pkill -USR2 btop || true'
+
+[templates.ghostty]
+input_path = '~/.config/matugen/templates/ghostty'
+output_path = '~/.config/ghostty/themes/matugen'
+post_hook = 'pkill -SIGUSR2 ghostty'
+
+[templates.heroic]
+input_path = '~/.config/matugen/templates/heroic.css'
+output_path = '~/.config/heroic/themes/matugen.css'
+
+[templates.zed]
+input_path = '~/.config/matugen/templates/zed-editor.json'
+output_path = '~/.config/zed/themes/matugen.json'
+
+[templates.vicinae]
+input_path = '~/.config/matugen/templates/vicinae.toml'
+output_path = '~/.local/share/vicinae/themes/matugen.toml'
+post_hook = 'vicinae theme set matugen'
+
+[templates.neovim]
+input_path = "~/.config/matugen/templates/nvim.json"
+output_path = "~/.cache/matugen/matugen.json"
+post_hook = "pkill -SIGUSR1 nvim"
+
+[templates.niri]
+input_path = '~/.config/matugen/templates/niri.kdl'
+output_path = '~/.config/niri/matugen.kdl'
+post_hook = 'niri msg action load-config-file'
+
+[templates.tmux]
+input_path = '~/.config/matugen/templates/tmux.conf'
+output_path = '~/.config/tmux/matugen.conf'
+post_hook = 'tmux source-file ~/.config/tmux/matugen.conf'

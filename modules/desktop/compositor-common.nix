@@ -19,8 +19,6 @@ in
       imports = [
         hm.cursor
         hm.idle
-        hm.gtk
-        hm.qt
 
         # ImageGlass photo viewer installed via flatpak
         hm.showtime # Video viewer

@@ -31,13 +31,13 @@ nixos-switch:
 	@echo "Rebuilding NixOS configuration..."
 	@git add .  # For easier package testing
 	@sudo nixos-rebuild switch --flake $(FLAKE)
-	$(call alert,NixOS rebuild complete.)
+	$(call alert,NixOS switch complete.)
 
 nixos-boot:
 	@echo "Rebuilding NixOS configuration..."
 	@git add .  # For easier package testing
 	@sudo nixos-rebuild boot --flake $(FLAKE)
-	$(call alert,NixOS boot configuration complete.)
+	$(call alert,NixOS boot complete.)
 
 nix-gc:
 	@echo "Collecting Nix garbage..."

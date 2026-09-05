@@ -13,7 +13,6 @@
 
           thunar-media-tags-plugin # Media
           thunar-volman # Removable media
-          xfce4-exo # Open in terminal
           xfconf # Settings persistence
         ];
       };
@@ -21,9 +20,20 @@
 
     };
 
-  flake.modules.homeManager.thunar = {
-    xdg.configFile."xfce4/helpers.rc".text = ''
-      			TerminalEmulator=ghostty
-      			'';
-  };
+  flake.modules.homeManager.thunar =
+    { pkgs, config, ... }:
+    {
+      xdg.configFile = {
+        "xfce4/helpers.rc".text = "TerminalEmulator=ghostty";
+        "xfce4/xfconf/xfce-perchannel-xml/thunar.xml" = {
+          # If settings are overriden via gui, this symlink will not work until switching again
+          source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/thunar/thunar.xml";
+          force = true;
+        };
+      };
+
+      home.activation.reloadXfconf = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD ${pkgs.xfconf}/bin/xfconfd --replace || true
+      '';
+    };
 }
