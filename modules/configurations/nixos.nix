@@ -48,7 +48,6 @@
               secrets =
                 lib.genAttrs
                   [
-                    "ssh/mobile"
                     "api_keys/tailscale"
                   ]
                   (name: {

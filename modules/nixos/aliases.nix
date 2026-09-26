@@ -11,8 +11,7 @@
         ll = "ls -l";
 
         wttr = "curl wttr.in";
-
-        tmux-help = "cat ~/dotfiles/config/tmux/help.txt";
+        wttrp = "curl wttr.in/$1";
       };
     };
 }

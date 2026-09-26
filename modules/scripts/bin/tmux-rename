@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+tmux rename-window $1
+eval $2
+tmux set-window-option automatic-rename on

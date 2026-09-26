@@ -74,6 +74,8 @@ in
 
       hm.zsh
       hm.atuin
+      hm.caligula
+      hm.usbutils
       hm.bat
       hm.btop
       hm.eza
@@ -90,6 +92,8 @@ in
       hm.tmux
 
       hm.libreoffice
+      hm.zathura
+      hm.krita
 
       hm.go
       hm.java
@@ -104,6 +108,7 @@ in
 
       hm.obs-studio
       hm.swappy
+      hm.tesseract
 
       hm.discord
       hm.heroic

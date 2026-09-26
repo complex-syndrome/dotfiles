@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+tmux-rename 'config' 'pp-run ~/dotfiles "$EDITOR ."'

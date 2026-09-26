@@ -7,6 +7,7 @@
     {
       programs.fzf = {
         enable = true;
+        historyWidget.command = "";
         #
         #   defaultCommand = "fd --type f --hidden --follow --exclude .git";
         #   defaultOptions = [

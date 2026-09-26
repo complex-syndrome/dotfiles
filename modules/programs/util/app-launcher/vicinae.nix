@@ -266,7 +266,7 @@
                   enabled = false;
                 };
                 refresh-apps = {
-                  enabled = false;
+                  enabled = true;
                 };
                 report-bug = {
                   enabled = false;

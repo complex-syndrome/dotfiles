@@ -13,6 +13,7 @@
 
         "pp-run"
         "config"
+        "tmux-rename"
         "switch"
         "ding"
         "spawn-terminal"

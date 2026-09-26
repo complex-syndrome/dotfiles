@@ -16,15 +16,6 @@
             appearance = lib.mkOption {
               type = lib.types.submodule {
                 options = {
-                  catppuccin = lib.mkOption {
-                    type = lib.types.submodule {
-                      options = {
-                        flavor = lib.mkOption { type = lib.types.str; };
-                        accent = lib.mkOption { type = lib.types.str; };
-                      };
-                    };
-                  };
-
                   gtkTheme = lib.mkOption {
                     type = lib.types.submodule {
                       options = {
@@ -106,15 +97,10 @@
       };
 
       config.profile = {
-        avatar = ./avatar.png;
-        wallpaper = ./wallpaper.jpg;
+        avatar = ../../wallpaper/avatar.png;
+        wallpaper = ../../wallpaper/wallpaper.jpg;
 
         appearance = {
-          catppuccin = {
-            flavor = "mocha";
-            accent = "lavender";
-          };
-
           gtkTheme = {
             name = "adw-gtk3";
             package = pkgs.adw-gtk3;

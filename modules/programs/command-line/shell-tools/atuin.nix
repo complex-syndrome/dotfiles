@@ -7,7 +7,7 @@
         inline_height = 25;
         invert = true;
         records = true;
-        search_mode = "skim";
+        search_mode = "fuzzy";
         secrets_filter = true;
         style = "compact";
       };

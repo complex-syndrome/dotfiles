@@ -58,6 +58,28 @@
           set -g allow-passthrough on
 
           set -g renumber-windows on
+
+          # -------------------------------------------------------------------
+          # Status Bar Layout & Base Styling
+          # -------------------------------------------------------------------
+          set -g status-style "bg=#{@thm_bg},fg=#{@thm_fg}"
+          set -g status-justify left
+          set -g status-left ""
+
+          # -------------------------------------------------------------------
+          # Window Tabs
+          # -------------------------------------------------------------------
+          # Inactive Window
+          set -g window-status-format "#[fg=#{@thm_surface_variant},bg=#{@thm_bg}]█#[fg=#{@thm_text_variant},bg=#{@thm_surface_variant}] #I #[fg=#{@thm_fg},bg=#{@thm_bg}] #W "
+
+          # Active Window (Highlighted)
+          set -g window-status-current-format "#[fg=#{@thm_primary},bg=#{@thm_bg}]*#[fg=#{@thm_bg},bg=#{@thm_primary},bold] #I #[fg=#{@thm_fg},bg=#{@thm_bg}] #W "
+
+          # -------------------------------------------------------------------
+          # Status Right (Host & Date/Time Modules)
+          # -------------------------------------------------------------------
+          set -g status-right-length 100
+          set -g status-right "#[fg=#{@thm_inverse_primary},bg=#{@thm_bg}]█#[fg=#{@thm_bg},bg=#{@thm_inverse_primary}] #H #[fg=#{@thm_surface_low},bg=#{@thm_bg}]█#[fg=#{@thm_fg},bg=#{@thm_surface_low}] %Y-%m-%d %H:%M "
         '';
       };
     };

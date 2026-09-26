@@ -134,6 +134,9 @@ binds {
         // Hack to prevent {} being escaped (etc. vicinae)
         spawn-sh "set -- Apps/SKlauncher-* && notify-send 'Opening Minecraft...' && appimage-run \"$1\""
     }
+    Mod+Alt+K hotkey-overlay-title="Open Krita" {
+        spawn-sh "set -- Apps/krita-* && notify-send 'Opening Krita...' && appimage-run \"$1\""
+    }
     Mod+Alt+N hotkey-overlay-title="[N]octalia Settings" {
         spawn-sh "noctalia msg settings-toggle"
     }
@@ -156,6 +159,9 @@ binds {
     // Screenshot (Fullscreen)
     Mod+Ctrl+S hotkey-overlay-title="Screenshot Fullscreen" {
         spawn-sh "noctalia msg screenshot-fullscreen && notify-send 'Screenshot captured'"
+    }
+    Mod+Alt+S hotkey-overlay-title="OCR Screenshot" {
+        spawn-sh "ocr"
     }
     Mod+Shift+C hotkey-overlay-title="Color Picker" {
         spawn-sh "COLOR=$(hyprpicker) && echo $COLOR | wl-copy && notify-send 'Color Picked' $COLOR"

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+wayblast area |
+	tesseract stdin stdout -1 "eng+jpn+chi_sim" 
+| tr -d '\f' | wl-copy
