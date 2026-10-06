@@ -4,7 +4,7 @@
     {
       environment.shellAliases = {
         cls = "clear";
-        nv = "nvim";
+        xx = "chmod +x";
 
         l = "ls -alh";
         la = "ls -al";

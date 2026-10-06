@@ -26,6 +26,8 @@
 
         claude-code
         chromedriver
+        rustdesk-flutter
+        proton-vpn
       ];
     };
 }

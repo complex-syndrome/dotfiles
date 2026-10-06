@@ -17,7 +17,7 @@ in
   flake.modules.nixos.base = {
     imports = commonImports ++ [
       nixos.steam
-      # nixos.containers
+      nixos.containers
       nixos.trash
 
       nixos.audio
@@ -72,6 +72,7 @@ in
       hm.zed-editor
       hm.jetbrains-toolbox
 
+      hm.devenv
       hm.zsh
       hm.atuin
       hm.caligula

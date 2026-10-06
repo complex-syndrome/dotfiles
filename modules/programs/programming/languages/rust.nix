@@ -3,7 +3,11 @@
     { config, pkgs, ... }:
     {
       home.packages = with pkgs; [
-        rustup
+        # BUG: FIX NVIM CONFIG
+        # rustup
+        rustc
+        cargo
+        rust-analyzer
       ];
     };
 }

@@ -144,6 +144,7 @@ in
               "notifications"
               "network"
               "bluetooth"
+              "output_volume"
               "battery"
               "session"
             ];

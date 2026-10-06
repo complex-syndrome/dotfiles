@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+df --block-size=1K --output=source,size,used,avail | awk 'NR > 1 {total_size += $2; total_used += $3} END {printf "Used space: %.1f%%\n", total_used / total_size * 100}'

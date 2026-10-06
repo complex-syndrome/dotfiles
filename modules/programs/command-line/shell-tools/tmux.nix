@@ -54,6 +54,8 @@
           bind-key -T copy-mode-vi 'C-k' select-pane -U
           bind-key -T copy-mode-vi 'C-l' select-pane -R
 
+          set -g default-terminal "screen-256color"
+
           # For image.nvim to passthrough tmux
           set -g allow-passthrough on
 

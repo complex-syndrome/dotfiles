@@ -2,21 +2,25 @@
   flake.modules.nixos.bluetooth =
     { pkgs, ... }:
     {
-      hardware.bluetooth = {
-        enable = true;
-        powerOnBoot = true;
+      hardware.bluetooth =
+        let
+          autoEnable = false;
+        in
+        {
+          enable = true;
+          powerOnBoot = autoEnable;
 
-        # Let mouse reconnect successfully if auto-disconnect
-        settings = {
-          General = {
-            FastConnectable = true;
-            UserspaceHID = true;
-          };
-          Policy = {
-            AutoEnable = true;
+          # Let mouse reconnect successfully if auto-disconnect
+          settings = {
+            General = {
+              FastConnectable = true;
+              UserspaceHID = true;
+            };
+            Policy = {
+              AutoEnable = autoEnable;
+            };
           };
         };
-      };
 
       systemd.services.rfkill-unblock-bluetooth = {
         description = "Unblock Bluetooth rfkill";

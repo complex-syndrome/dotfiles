@@ -2,9 +2,8 @@
   flake.modules.homeManager.scripts =
     { lib, pkgs, ... }:
     let
-      commonScripts = [
+      scriptNames = [
         "cd-to-project"
-        "docker"
         "fif"
         "fkill"
         "ks"
@@ -17,15 +16,11 @@
         "switch"
         "ding"
         "spawn-terminal"
-      ];
 
-      linuxScripts = [
         "ocr"
         "toggle-screen-recording"
         "wayblast"
       ];
-
-      scriptNames = commonScripts ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux linuxScripts;
 
       scripts = pkgs.stdenvNoCC.mkDerivation {
         pname = "personal-scripts";

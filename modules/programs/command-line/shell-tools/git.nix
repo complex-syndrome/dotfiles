@@ -11,6 +11,9 @@
         gs = "git status";
         gl = "git remote -v";
         gcl = "git clone --depth=1";
+        gitnewrepo = "git init && git branch -M main && git remote add origin";
+        giturls = "git remote -v";
+        lzg = "lazygit";
       };
 
       xdg.configFile."git/config-soton".text = ''
@@ -52,24 +55,7 @@
           };
         };
 
-        lazygit = {
-          enable = true;
-
-          settings = {
-            gui = {
-              showNumstatInFilesView = true;
-            };
-
-            git = {
-              pagers = [
-                {
-                  colorArg = "always";
-                  pager = "delta --paging=never";
-                }
-              ];
-            };
-          };
-        };
+        lazygit.enable = true;
       };
     };
 }
